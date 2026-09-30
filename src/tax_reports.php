@@ -5,7 +5,14 @@ $message = '';
 
 if (isset($_GET['export'])) {
     $type = $_GET['export'];
-    $filename = ($type == 'vat') ? 'alv_ilmoitus.csv' : 'veroilmoitus.csv';
+
+    // Sallitaan vain vat tai tax
+    if ($type !== 'vat' && $type !== 'tax') {
+        http_response_code(400);
+        exit('Virheellinen export-parametri.');
+    }
+
+    $filename = ($type === 'vat') ? 'alv_ilmoitus.csv' : 'veroilmoitus.csv';
 
     header('Content-Type: text/csv');
     header('Content-Disposition: attachment; filename="' . $filename . '"');
