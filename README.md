@@ -32,13 +32,14 @@ Yksinkertainen web-pohjainen taloushallintojärjestelmä pienyrityksille. Ohjelm
 
 1. Kloonaa tai lataa projekti
 2. Siirry projektin hakemistoon
-3. Käynnistä kontit:
+3. Kopioi `.env.example` nimellä `.env` ja aseta siihen vahvat, yksilölliset arvot `MYSQL_PASSWORD`- ja `MYSQL_ROOT_PASSWORD`-muuttujiin. Älä lisää `.env`-tiedostoa versionhallintaan.
+4. Käynnistä kontit:
 ```bash
 docker-compose up -d
 ```
 
-4. Odota, kunnes tietokanta on valmis (n. 10-15 sekuntia)
-5. Avaa selaimessa: `http://localhost:8080`
+5. Odota, kunnes tietokanta on valmis (n. 10-15 sekuntia)
+6. Avaa selaimessa: `http://localhost:8080`
 
 ## Käyttö
 
@@ -67,20 +68,15 @@ docker-compose up -d
 - **Veroilmoitus**: Verotettava tulo
 - **CSV-vienti**: Vie tiedot CSV-muodossa
 
-## Tietokannan tunnukset
+## Tietokannan asetukset
 
-- **Host**: `db`
-- **Tietokanta**: `taloushallinto`
-- **Käyttäjä**: `user`
-- **Salasana**: `pass`
-- **Root-salasana**: `root`
+Tietokantayhteys lukee asetukset ympäristömuuttujista. Docker Compose välittää tietokannan tunnukset `.env`-tiedostosta sovellukselle. Älä tallenna oikeita tunnuksia lähdekoodiin tai versionhallintaan.
 
 ## Lisäpalvelut
 
 ### phpMyAdmin
 Voit hallita tietokantaa phpMyAdminilla osoitteessa: `http://localhost:8081`
-- Käyttäjä: `root`
-- Salasana: `root`
+- Kirjaudu sisään `.env`-tiedostossa määritellyllä tietokantakäyttäjällä ja salasanalla.
 
 ## Tiedostorakenne
 
